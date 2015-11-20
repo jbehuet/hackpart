@@ -1,0 +1,4 @@
+function partyController($scope){
+    
+    
+}

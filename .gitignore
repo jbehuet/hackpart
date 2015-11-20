@@ -1,2 +1,5 @@
 *.DS_Store
+.brackets.json
 **/node_modules
+**/platforms/
+**/plugins/
