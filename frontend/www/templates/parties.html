@@ -1,10 +1,10 @@
 <ion-view view-title="Parties">
     <ion-content>
         <div class="list" ng-repeat="party in parties">
-            <a class="item item-thumbnail-left" href="#">
+            <a class="item item-thumbnail-left" href="#/app/party/{{party._id}}">
                 <img src="../img/tumb_party.png">
                 <h2>{{party.title}}</h2>
-                <p>{{party.date | date : format : 'DD-MM-YYYY' }}</p>
+                <p>Le {{party.date | date : 'd MMM. y' }}</p>
                 <p>{{party.entrant.length }}<span ng-if="party.place > 0">/{{party.place}}</span> participants</p>
             </a>
         </div>

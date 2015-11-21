@@ -1,12 +1,32 @@
-<ion-view view-title="{{party.title}}">
+<ion-view>
+    <ion-nav-title>{{party.title}}</ion-nav-title>
     <ion-content>
-        <div class="list" ng-repeat="party in parties">
-            <a class="item item-thumbnail-left" href="#">
+        <div class="list card">
+
+            <div class="item item-avatar">
                 <img src="../img/tumb_party.png">
-                <h2>{{party.title}}</h2>
-                <p>{{party.date | date : format : 'DD-MM-YYYY' }}</p>
-                <p>{{party.entrant.length }}<span ng-if="party.place > 0">/{{party.place}}</span> participants</p>
-            </a>
+                <h2>{{party.title}} ( {{party.price}}€ / pers.)</h2>
+                <p>Le {{party.date | date : 'd MMM. y' }}</p>
+            </div>
+
+            <div class="item item-body">
+                <p>
+                    {{party.description}}
+                </p>
+                <p>
+                    <a href="#" class="subdued">{{party.entrant.length }}<span ng-if="party.place > 0">/{{party.place}}</span> participants</a>
+                </p>
+            </div>
+
+            <div class="item tabs tabs-secondary tabs-icon-left">
+                <a class="tab-item" href="#">
+                    <i class="icon ion-android-done"></i> I go
+                </a>
+                <a class="tab-item" href="#">
+                    <i class="icon ion-trash-b"></i> Delete
+                </a>
+            </div>
+
         </div>
     </ion-content>
 </ion-view>

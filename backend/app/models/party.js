@@ -23,14 +23,20 @@ var Party = {
     model: mongoose.model('Party', partySchema),
         
     findAll: function(req, res) {
-        Party.model.find({}).populate("organizer", "-password").populate("entrant.user", "-password").exec(function(err,parties) {
-            res.json(parties);
+        Party.model.find({})
+            .populate("organizer", "-password")
+            .populate("entrant.user", "-password")
+            .exec(function(err,parties) {
+                res.json(parties);
 		});
 	},
     
     findById: function(req, res) {
-		Party.model.findById(req.headers.id, function (err, party) {
-			 res.json(party);
+		Party.model.findById(req.params.id)
+            .populate("organizer", "-password")
+            .populate("entrant.user", "-password")
+            .exec(function (err, party) {
+                res.json(party);
 		});
 	},
 

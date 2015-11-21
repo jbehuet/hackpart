@@ -21,10 +21,19 @@ function config($stateProvider, $urlRouterProvider) {
       .state('app', {
         url: '/app',
         abstract: true,
-        templateUrl: 'templates/menu.html',
-        controller: 'AppCtrl'
+        templateUrl: 'templates/menu.html'
       })
 
+      .state('app.login', {
+        url: '/login',
+        views: {
+          'menuContent': {
+            templateUrl: 'templates/login.html',
+            controller: ''
+          }
+        }
+      })
+  
       .state('app.parties', {
         url: '/parties',
         views: {
@@ -44,8 +53,18 @@ function config($stateProvider, $urlRouterProvider) {
           }
         }
       })
+  
+      .state('app.party', {
+        url: '/party/:id',
+        views: {
+          'menuContent': {
+            templateUrl: 'templates/party.html',
+            controller: 'partyController'
+          }
+        }
+      })
 
-  $urlRouterProvider.otherwise('/app/parties');
+  $urlRouterProvider.otherwise('/app/login');
 }
 
 
@@ -56,6 +75,7 @@ angular.module('starter', ['ionic', 'starter.controllers'])
           port: 8000
       };
     })
+    .service('connectService', connectService)
     .service('partiesService', partiesService)
     .run(run)
     .config(config);
