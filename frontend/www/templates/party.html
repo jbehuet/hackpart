@@ -1,15 +1,12 @@
-<ion-view view-title="New Party">
+<ion-view view-title="{{party.title}}">
     <ion-content>
-        <div class="list">
-            <label class="item item-input">
-                <input type="text" placeholder="Title">
-            </label>
-            <label class="item item-input">
-                <textarea placeholder="Description"></textarea>
-            </label>
-            <button class="button button-block button-positive">
-                Save
-            </button>
+        <div class="list" ng-repeat="party in parties">
+            <a class="item item-thumbnail-left" href="#">
+                <img src="../img/tumb_party.png">
+                <h2>{{party.title}}</h2>
+                <p>{{party.date | date : format : 'DD-MM-YYYY' }}</p>
+                <p>{{party.entrant.length }}<span ng-if="party.place > 0">/{{party.place}}</span> participants</p>
+            </a>
         </div>
     </ion-content>
 </ion-view>

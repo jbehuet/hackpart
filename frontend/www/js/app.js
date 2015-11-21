@@ -35,11 +35,11 @@ function config($stateProvider, $urlRouterProvider) {
         }
       })
   
-      .state('app.party', {
-        url: '/party',
+      .state('app.new-party', {
+        url: '/party/new',
         views: {
           'menuContent': {
-            templateUrl: 'templates/party.html',
+            templateUrl: 'templates/new-party.html',
             controller: 'partyController'
           }
         }
