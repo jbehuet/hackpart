@@ -1,6 +1,6 @@
 // Ionic Starter App
 
-function run($ionicPlatform, $rootScope) {
+function run($ionicPlatform) {
   $ionicPlatform.ready(function() {
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
     // for form inputs)
@@ -14,10 +14,10 @@ function run($ionicPlatform, $rootScope) {
       StatusBar.styleDefault();
     }
       
-  });
+  });    
 }
 
-function config($stateProvider, $urlRouterProvider) {
+function config($stateProvider, $urlRouterProvider, $httpProvider) {
   $stateProvider
       .state('app', {
         url: '/app',
@@ -76,6 +76,24 @@ function config($stateProvider, $urlRouterProvider) {
       })
 
   $urlRouterProvider.otherwise('/app/login');
+  
+  $httpProvider.interceptors.push(function ($q, $location) {
+       return {
+           'request': function (config) {
+               config.headers = config.headers || {};
+               if (window.localStorage['token']) {
+                   config.headers.authorization = window.localStorage['token'];
+               }
+               return config;
+           },
+           'responseError': function (response) {
+               if (response.status === 401 || response.status === 403) {
+                   $location.path('/login');
+               }
+               return $q.reject(response);
+           }
+       };
+    });
 }
 
 angular.module('starter', ['ionic', 'starter.controllers'])

@@ -24,13 +24,7 @@ app.use(bodyParser.json());										// parse application/json
 app.use(bodyParser.json({ type: 'application/vnd.api+json' })); // parse application/vnd.api+json as json
 app.use(methodOverride('X-HTTP-Method-Override'));				// override with the X-HTTP-Method-Override header in the request
 
-//app.use(session({ secret: 'sampleSecretSession', resave: true, saveUninitialized: true }));
-app.use(session({
-  cookieName: 'session',
-  secret: 'sampleSecretSession',
-  resave: true, 
-  saveUninitialized: true
-}));
+app.use(session({ secret: 'sampleSecretSession', resave: true, saveUninitialized: true }));
 app.use(passport.initialize());
 app.use(passport.session());
 
@@ -39,7 +33,7 @@ app.use(function(request, response, next) {
     response.header('Access-Control-Allow-Credentials', true);
     response.header('Access-Control-Allow-Origin', request.headers.origin);
     response.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
-    response.header('Access-Control-Allow-Headers', 'X-Requested-With, X-HTTP-Method-Override, Content-Type, Accept');
+    response.header('Access-Control-Allow-Headers', 'X-ACCESS_TOKEN, Access-Control-Allow-Origin, Authorization, X-Requested-With, X-HTTP-Method-Override, Content-Type, Accept');
     next();
 });
 
