@@ -19,10 +19,14 @@
             </div>
 
             <div class="item tabs tabs-secondary tabs-icon-left">
-                <a class="tab-item" href="#">
+                <a class="tab-item" ng-click="subscribe()" ng-if="user && !isEntrant()">
                     <i class="icon ion-android-done"></i> I go
                 </a>
-                <a class="tab-item" href="#">
+                
+                <a class="tab-item" ng-click="unsubscribe()" ng-if="user && isEntrant()">
+                    <i class="icon ion-ios-undo"></i> I leave
+                </a>
+                <a class="tab-item" ng-click="delete()" ng-if="party.organizer._id == user._id">
                     <i class="icon ion-trash-b"></i> Delete
                 </a>
             </div>

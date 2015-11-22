@@ -9,6 +9,12 @@ function partiesService($http, global) {
 		update : function(id, data){
 			return $http.put('http://' + global.host + ':' + global.port + '/api/parties/' + id, data);
 		},
+        subscribe : function(id, data){
+			return $http.put('http://' + global.host + ':' + global.port + '/api/parties/subscribe/' + id, data);
+		},
+        unsubscribe : function(id, data){
+			return $http.put('http://' + global.host + ':' + global.port + '/api/parties/unsubscribe/' + id, data);
+		},
 		create : function(data) {
 			return $http.post('http://' + global.host + ':' + global.port + '/api/parties', data);
 		},
