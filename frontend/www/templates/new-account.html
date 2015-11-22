@@ -1,0 +1,21 @@
+<ion-view view-title="New User">
+    <ion-content>
+        <div class="row">
+            <div class="col list">
+                <form ng-submit="save()">
+                    <label class="item item-input item-stacked-label">
+                        <span class="input-label">Name</span>
+                        <input type="text" placeholder="John" ng-model="account.name">
+                    </label>
+                    <label class="item item-input item-stacked-label">
+                        <span class="input-label">Password</span>
+                        <input type="password" placeholder="Secret" ng-model="account.password">
+                    </label>
+                    <button class="button button-block button-positive" type="submit">
+                        Save
+                    </button>
+                </form>
+            </div>
+        </div>
+    </ion-content>
+</ion-view>

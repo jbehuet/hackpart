@@ -9,12 +9,5 @@ exports.user = {
 	    //  return res.sendStatus(403);
 	    //}
 	    next();
- 	},
-    
-	isAdministrator: function (req, res, next) {
-	    //if (!req.user.admin) {
-	    //  return res.sendStatus(401);
-	    //}
-	    next();
-  	}
+ 	}
 };

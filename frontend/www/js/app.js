@@ -1,6 +1,6 @@
 // Ionic Starter App
 
-function run($ionicPlatform) {
+function run($ionicPlatform, $rootScope) {
   $ionicPlatform.ready(function() {
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
     // for form inputs)
@@ -13,6 +13,7 @@ function run($ionicPlatform) {
       // org.apache.cordova.statusbar required
       StatusBar.styleDefault();
     }
+      
   });
 }
 
@@ -29,10 +30,20 @@ function config($stateProvider, $urlRouterProvider) {
         views: {
           'menuContent': {
             templateUrl: 'templates/login.html',
-            controller: ''
+            controller: 'loginController'
           }
         }
       })
+  
+      .state('app.new-account', {
+        url: '/account/new',
+        views: {
+          'menuContent': {
+            templateUrl: 'templates/new-account.html',
+            controller: 'accountController'
+          }
+        }
+      })    
   
       .state('app.parties', {
         url: '/parties',
@@ -67,7 +78,6 @@ function config($stateProvider, $urlRouterProvider) {
   $urlRouterProvider.otherwise('/app/login');
 }
 
-
 angular.module('starter', ['ionic', 'starter.controllers'])
     .factory('global', function() {
       return {
@@ -76,6 +86,7 @@ angular.module('starter', ['ionic', 'starter.controllers'])
       };
     })
     .service('connectService', connectService)
+    .service('accountService', accountService)
     .service('partiesService', partiesService)
     .run(run)
     .config(config);
